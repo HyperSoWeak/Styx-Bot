@@ -1,5 +1,5 @@
 const { Events, Collection } = require('discord.js');
-const { ownerId } = require('.././config.json');
+const { ownerId } = require('../config.json');
 
 module.exports = {
 	name: Events.InteractionCreate,
