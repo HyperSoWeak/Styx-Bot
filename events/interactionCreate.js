@@ -1,4 +1,5 @@
 const { Events, Collection } = require('discord.js');
+const { ownerId } = require('.././config.json');
 
 module.exports = {
 	name: Events.InteractionCreate,
@@ -10,6 +11,10 @@ module.exports = {
 		if (!command) {
 			console.error(`No command matching ${interaction.commandName} was found.`);
 			return;
+		}
+
+		if(command.ownerOnly && interaction.user.id != ownerId) {
+			return interaction.reply({ content: `Haha you are not **Hyper**, you don't have permission to execute this command.`, ephemeral: true });
 		}
 
 		const { cooldowns } = interaction.client;
