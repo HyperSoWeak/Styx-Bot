@@ -9,7 +9,7 @@ module.exports = {
 		.setDescription('Reloads a command.')
 		.addStringOption(option =>
 			option.setName('command')
-				.setDescription('The command to reload.')
+				.setDescription('The command name to reload')
 				.setRequired(true)),
 	async execute(interaction) {
 		const commandName = interaction.options.getString('command', true).toLowerCase();

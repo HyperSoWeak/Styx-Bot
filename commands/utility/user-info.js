@@ -13,12 +13,10 @@ module.exports = {
 		let user = interaction.options.getUser('user') ?? interaction.user;
 		user = await user.fetch(true);
 
-		console.log(user);
-
 		const userInfoEmbed = new EmbedBuilder()
 			.setColor(user.accentColor)
 			.setTitle(user.globalName)
-			.setThumbnail(user.avatarURL({ size: 256 }))
+			.setThumbnail(user.displayAvatarURL({ size: 256 }))
 			.addFields(
 				{ name: 'Username', value: user.username, inline: true },
 				{ name: 'User ID', value: user.id, inline: true },

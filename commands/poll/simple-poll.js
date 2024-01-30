@@ -2,11 +2,12 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const { accentColor } = require('../../config.json');
 
 module.exports = {
+	unfinished: true,
 	cooldown: 5,
-	category: 'utility',
+	category: 'poll',
 	data: new SlashCommandBuilder()
-		.setName('ping')
-		.setDescription('Display bot ping.'),
+		.setName('simple-poll')
+		.setDescription('Create a poll with reactions.'),
 	async execute(interaction) {
 		await interaction.deferReply();
 		const reply = await interaction.fetchReply();
@@ -21,6 +22,6 @@ module.exports = {
 			)
 			.setTimestamp();
 
-		await interaction.editReply({ content:'Pong!', embeds: [pingEmbed] });
+		await interaction.editReply({ embeds: [pingEmbed] });
 	},
 };

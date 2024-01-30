@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder, embedLength } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const { accentColor } = require('../../config.json');
 
 module.exports = {
@@ -6,15 +6,9 @@ module.exports = {
 	category: 'utility',
 	data: new SlashCommandBuilder()
 		.setName('server-info')
-		.setDescription('Provides information about the server.'),
+		.setDescription('Provides information about the server.')
+		.setDMPermission(false),
 	async execute(interaction) {
-		if(!interaction.inGuild()) {
-			return interaction.reply({
-				content: "You can only run this command in a server.",
-				ephemeral: true,
-			});
-		}
-
 		const { guild } = interaction;
 		const serverInfoEmbed = new EmbedBuilder({
 			author: { name: guild.name, iconURL: guild.iconURL({ size: 256 }) },

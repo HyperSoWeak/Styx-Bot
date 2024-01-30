@@ -3,6 +3,8 @@ const { clientId, guildId, token } = require('./config.json');
 const fs = require('node:fs');
 const path = require('node:path');
 
+const globalCommand = false;
+
 const commands = [];
 
 const foldersPath = path.join(__dirname, 'commands');
@@ -14,6 +16,7 @@ for (const folder of commandFolders) {
 	for (const file of commandFiles) {
 		const filePath = path.join(commandsPath, file);
 		const command = require(filePath);
+		if(globalCommand && command.unfinished) continue;
 		if ('data' in command && 'execute' in command) {
 			commands.push(command.data.toJSON());
 		} else {
@@ -29,12 +32,11 @@ const rest = new REST().setToken(token);
 		console.log(`Started refreshing ${commands.length} application (/) commands.`);
 
 		const data = await rest.put(
-			// Routes.applicationCommands(clientId),
-			Routes.applicationGuildCommands(clientId, guildId),
+			globalCommand ? Routes.applicationCommands(clientId) : Routes.applicationGuildCommands(clientId, guildId),
 			{ body: commands },
 		);
 
-		console.log(`Successfully reloaded ${data.length} application (/) commands.`);
+		console.log(`Successfully reloaded ${data.length} application (/) commands to ${globalCommand ? 'GLOBAL' : 'guild'}.`);
 	} catch (error) {
 		console.error(error);
 	}
