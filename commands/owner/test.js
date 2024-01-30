@@ -9,18 +9,11 @@ module.exports = {
 		.setDescription('For testing purposes.')
 		.setDefaultMemberPermissions('0'),
 	async execute(interaction) {
-		const username = 'vausdilfp';
-		const url = 'https://api.mojang.com/users/profiles/minecraft/' + username;
-
-		const response = await fetch(url);
-		if(!response.ok) {
-			if(response.status == 404) {
-				return interaction.reply(`User not found.`);
-			}
-			throw new Error(`Failed to fetch UUID from API. Status: ${response.status}`);
+		const message = await interaction.reply({ content: 'Reaction test', fetchReply: true });
+		try {
+			await message.react('🇦');
+		} catch (error) {
+			console.error('One of the emojis failed to react:', error);
 		}
-
-		const data = await response.json();
-		interaction.reply(`ID: ${data.id}`);
 	},
 };
