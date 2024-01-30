@@ -3,6 +3,7 @@ const { accentColor } = require('../../config.json');
 
 module.exports = {
 	cooldown: 5,
+	category: 'utility',
 	data: new SlashCommandBuilder()
 		.setName('ping')
 		.setDescription('Replies with Pong!'),
@@ -13,7 +14,7 @@ module.exports = {
 
 		const pingEmbed = new EmbedBuilder()
 			.setColor(accentColor)
-			.setTitle('Ping')
+			.setTitle(':satellite: Ping')
 			.setFields(
 				{ name: 'Client', value: `\`${ping} ms\``, inline: true },
 				{ name: 'Websocket', value: `\`${interaction.client.ws.ping} ms\``, inline: true }

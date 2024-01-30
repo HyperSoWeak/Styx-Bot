@@ -1,20 +1,22 @@
-const { SlashCommandBuilder, EmbedBuilder, embedLength } = require('discord.js');
-const { accentColor } = require('../../config.json');
+const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
+	cooldown: 10,
+	category: 'utility',
 	data: new SlashCommandBuilder()
-		.setName('serverinfo')
-		.setDescription('Provides information about the server.'),
+		.setName('user-info')
+		.setDescription('Provides information about the user.')
+		.addUserOption(option =>
+			option.setName('user')
+				.setDescription('The user to display')),
 	async execute(interaction) {
-		if(!interaction.inGuild()) {
-			return interaction.reply({
-				content: "You can only run this command in a server.",
-				ephemeral: true,
-			});
+		let user = interaction.options.getUser('user');
+
+		if(!user) {
+			user = interaction.author.getUser();
 		}
 
-		const { guild } = interaction;
-		const serverInfoEmbed = new EmbedBuilder({
+		const userInfoEmbed = new EmbedBuilder({
 			author: { name: guild.name, iconURL: guild.iconURL({ size: 256 }) },
 			fields: [
 				{ name: 'Owner', value: (await guild.fetchOwner()).user.tag, inline: true },
@@ -26,8 +28,12 @@ module.exports = {
 				{ name: 'Role List', value: guild.roles.cache.toJSON().join(', ') },
 			],
 			footer: { text: `ID: ${guild.id} | Server Created: ${guild.createdAt.toDateString()}` }
-		}).setColor(accentColor)
+		}).setColor(user.accentColor)
 
-		await interaction.reply({ embeds: [serverInfoEmbed] });
+		await interaction.reply({ embeds: [userInfoEmbed] });
+
+		// interaction.user is the object representing the User who ran the command
+		// interaction.member is the GuildMember object, which represents the user in the specific guild
+		await interaction.reply(`This command was run by ${interaction.user.username}, who joined on ${interaction.member.joinedAt}.`);
 	},
 };

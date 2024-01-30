@@ -3,6 +3,7 @@ const { SlashCommandBuilder } = require('discord.js');
 module.exports = {
 	ownerOnly: true,
 	cooldown: 0,
+	category: 'owner',
 	data: new SlashCommandBuilder()
 		.setName('say')
 		.setDescription('Say anything as the bot!')
