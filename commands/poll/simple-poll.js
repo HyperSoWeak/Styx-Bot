@@ -3,7 +3,7 @@ const { accentColor } = require('../../config.json');
 
 module.exports = {
 	unfinished: true,
-	cooldown: 5,
+	cooldown: 10,
 	category: 'poll',
 	data: new SlashCommandBuilder()
 		.setName('simple-poll')

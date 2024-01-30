@@ -2,10 +2,11 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const { accentColor } = require('../../config.json');
 
 module.exports = {
+	cooldown: 10,
 	category: 'utility',
 	data: new SlashCommandBuilder()
-		.setName('ping')
-		.setDescription('Display bot ping.'),
+		.setName('server-settings')
+		.setDescription('Display or change server settings.'),
 	async execute(interaction) {
 		await interaction.deferReply();
 		const reply = await interaction.fetchReply();

@@ -25,7 +25,6 @@ module.exports = {
 		}
 
 		const data = await response.json();
-		console.log(data);
 		
 		const skinEmbed = new EmbedBuilder()
 			.setColor(accentColor)
