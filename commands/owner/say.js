@@ -8,6 +8,7 @@ module.exports = {
 		.setName('say')
 		.setDescription('Say anything as the bot!')
 		.setDefaultMemberPermissions('0')
+		.setDMPermission(false)
 		.addStringOption(option =>
 			option.setName('message')
 				.setDescription('The message to say')

@@ -2,6 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const { accentColor } = require('../../config.json');
 
 module.exports = {
+	unfinished: true,
 	cooldown: 10,
 	category: 'utility',
 	data: new SlashCommandBuilder()

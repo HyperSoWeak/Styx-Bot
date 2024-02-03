@@ -8,13 +8,10 @@ const id = {
 module.exports = {
 	name: Events.MessageCreate,
 	async execute(message) {
-        if(message.author.id == id.hyper) {
-            if(Math.random() < 0.1) {
+        if(message.author.id == id.tpgtw) {
+            if(Math.random() < 0.2) {
                 await message.reply('你是甲');
             }
-        }
-        if(message.author.id == id.tpgtw) {
-            await message.react('🈸');
         }
 	},
 };
