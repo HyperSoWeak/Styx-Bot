@@ -12,10 +12,21 @@ module.exports = {
 		.addStringOption(option =>
 			option.setName('message')
 				.setDescription('The message to say')
-				.setRequired(true)),
+				.setRequired(true))
+		.addStringOption(option =>
+			option.setName('reply-msg-id')
+				.setDescription('If given, the bot will reply to the message with this id')),
 	async execute(interaction) {
 		const message = interaction.options.getString('message');
-		await interaction.channel.send(message);
+		const replyMsgId = interaction.options.getString('reply-msg-id');
+
+		if(!replyMsgId) {
+			await interaction.channel.send(message);
+			return interaction.reply({ content: 'Success!', ephemeral: true });
+		}
+
+		const msgToReply = await interaction.channel.messages.fetch(replyMsgId);
+		await msgToReply.reply(message);
 		return interaction.reply({ content: 'Success!', ephemeral: true });
 	},
 };
