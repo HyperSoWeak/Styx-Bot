@@ -2,7 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 module.exports = {
 	cooldown: 10,
-	category: 'utility',
+	category: 'bot',
 	data: new SlashCommandBuilder()
 		.setName('user-info')
 		.setDescription('Provides information about the user.')

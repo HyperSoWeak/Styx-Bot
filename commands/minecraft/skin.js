@@ -2,7 +2,6 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const { accentColor } = require('../../config.json');
 
 module.exports = {
-	cooldown: 5,
 	category: 'minecraft',
 	data: new SlashCommandBuilder()
 		.setName('skin')

@@ -3,7 +3,7 @@ const { accentColor } = require('../../config.json');
 const base32 = require('base32');
 
 module.exports = {
-	category: 'crypto',
+	category: 'utility',
 	data: new SlashCommandBuilder()
 		.setName('decode')
 		.setDescription('Decode given string into other format.')

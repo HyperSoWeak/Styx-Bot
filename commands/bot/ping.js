@@ -2,7 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const { accentColor } = require('../../config.json');
 
 module.exports = {
-	category: 'utility',
+	category: 'bot',
 	data: new SlashCommandBuilder()
 		.setName('ping')
 		.setDescription('Display bot ping.'),

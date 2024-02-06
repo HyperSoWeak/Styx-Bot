@@ -2,7 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const { accentColor } = require('../../config.json');
 
 module.exports = {
-	cooldown: 10,
+	cooldown: 15,
 	category: 'poll',
 	data: createSlashCommand(),
 	async execute(interaction) {
