@@ -3,7 +3,7 @@ const { accentColor } = require('../../config.json');
 
 module.exports = {
 	cooldown: 10,
-	category: 'utility',
+	category: 'bot',
 	data: new SlashCommandBuilder()
 		.setName('server-info')
 		.setDescription('Provides information about the server.')

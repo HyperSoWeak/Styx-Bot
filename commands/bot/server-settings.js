@@ -4,7 +4,7 @@ const { accentColor } = require('../../config.json');
 module.exports = {
 	unfinished: true,
 	cooldown: 10,
-	category: 'utility',
+	category: 'bot',
 	data: new SlashCommandBuilder()
 		.setName('server-settings')
 		.setDescription('Display or change server settings.'),
