@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "base32": "^0.0.7",
+    "canvas": "^2.11.2",
     "discord.js": "^14.14.1",
     "mongoose": "^8.1.1"
   }

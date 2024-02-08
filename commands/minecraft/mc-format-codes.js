@@ -5,7 +5,7 @@ module.exports = {
 	cooldown: 10,
 	category: 'minecraft',
 	data: new SlashCommandBuilder()
-		.setName('format-codes')
+		.setName('mc-format-codes')
 		.setDescription('List all Minecraft format codes.'),
 	async execute(interaction) {
         const imageURL = "https://static.wikia.nocookie.net/minecraft_gamepedia/images/7/7e/Minecraft_Formatting.gif/revision/latest?cb=20200828001454";

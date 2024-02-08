@@ -4,8 +4,8 @@ const { accentColor } = require('../../config.json');
 module.exports = {
 	category: 'minecraft',
 	data: new SlashCommandBuilder()
-		.setName('skin')
-		.setDescription('Replies with Pong!')
+		.setName('mc-skin')
+		.setDescription('Display the player skin of given username.')
 		.addStringOption(option =>
 			option.setName('username')
 				.setDescription('Target minecraft username')
